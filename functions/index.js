@@ -12,7 +12,19 @@ const admin = require("firebase-admin");
 admin.initializeApp();
 
 // Import the function from the specific file.
+// Importing Firebase Cloud Functions from separate files.
 const {addMessage} = require("./api/addMessage");
+const {updateMessage} = require("./api/updateMessage");
+const {getMessage} = require("./api/getMessage");
+const {getAllMessages} = require("./api/getAllMessages");
+const {deleteMessage} = require("./api/deleteMessage");
+
+// Exporting the Cloud Functions to be deployed.
+exports.addMessage = addMessage;
+exports.updateMessage = updateMessage;
+exports.getMessage = getMessage;
+exports.getAllMessages = getAllMessages;
+exports.deleteMessage = deleteMessage;
 
 // Export the addMessage function for deployment.
-exports.addMessage = addMessage;
+// exports.addMessage = addMessage;

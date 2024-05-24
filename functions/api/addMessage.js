@@ -5,6 +5,14 @@ const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 const {logger} = functions;
 
+/**
+ * Adds a message to Firestore under a specific user's chat.
+ * This Firebase Cloud Function is triggered by an HTTPS request.
+ * @param {Object} data The data object containing userId and text fields.
+ * @param {Object} context The context object containing metadata for the function invocation.
+ * @returns {Object} Returns a success status and the ID of the added message.
+ * @throws {functions.https.HttpsError} Throws an HTTP error if required fields are missing or if an unknown error occurs.
+ */
 exports.addMessage = functions.https.onCall(async (data, context) => {
   try {
     logger.log("Received message request data:", data);
